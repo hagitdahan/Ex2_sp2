@@ -1,0 +1,3 @@
+/home/hagit/CLionProjects/Ex2_sp/cmake-build-debug/CMakeFiles/Ex2_sp.dir
+/home/hagit/CLionProjects/Ex2_sp/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/hagit/CLionProjects/Ex2_sp/cmake-build-debug/CMakeFiles/rebuild_cache.dir

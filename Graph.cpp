@@ -383,6 +383,7 @@ namespace ariel{
     Graph& Graph::operator++(){
         for (size_t i = 0; i < numOfVertices; ++i) {
             for (size_t j = 0; j < numOfVertices; ++j) {
+                if(this->adjancencyMatrix[i][j]==0)continue;
                 this->adjancencyMatrix[i][j]++;
             }
         }
@@ -393,13 +394,15 @@ namespace ariel{
      * @return
      */
     Graph Graph::operator++(int){
-        Graph res;
+        Graph res(*this);
         vector<vector<int>> resultMatrix(numOfVertices, vector<int>(numOfVertices, 0));
         for (size_t i = 0; i < numOfVertices; ++i) {
             for (size_t j = 0; j < numOfVertices; ++j) {
+                if(this->adjancencyMatrix[i][j]==0)continue;
                 resultMatrix[i][j]= this->adjancencyMatrix[i][j]++;
             }
         }
+        res.loadGraph(resultMatrix);
         return res;
     }
     /**
@@ -409,6 +412,7 @@ namespace ariel{
     Graph& Graph::operator--(){
         for (size_t i = 0; i < numOfVertices; ++i) {
             for (size_t j = 0; j < numOfVertices; ++j) {
+                if(this->adjancencyMatrix[i][j]==0)continue;
                 this->adjancencyMatrix[i][j]--;
             }
         }
@@ -419,13 +423,15 @@ namespace ariel{
      * @return
      */
     Graph Graph::operator--(int){
-        Graph res;
+        Graph res(*this);
         vector<vector<int>> resultMatrix(numOfVertices, vector<int>(numOfVertices, 0));
         for (size_t i = 0; i < numOfVertices; ++i) {
             for (size_t j = 0; j < numOfVertices; ++j) {
+                if(this->adjancencyMatrix[i][j]==0)continue;
                 resultMatrix[i][j]= this->adjancencyMatrix[i][j]--;
             }
         }
+        res.loadGraph(resultMatrix);
         return res;
     }
     /**
@@ -453,7 +459,7 @@ namespace ariel{
         }
 
         // Create a new graph and load the result matrix into it
-        Graph resultGraph;
+        Graph resultGraph(*this);
         resultGraph.loadGraph(resultMatrix);
 
         return resultGraph;
